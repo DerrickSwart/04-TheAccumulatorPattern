@@ -25,9 +25,9 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #
 #     a. If you want a loop that runs   r   times,
 #          which of the following three choices would you use?
-#       we would use "for k in range (r + 1)
+#       we would use "for k in range (r)
 #            for k in range(r - 1):
-#            for k in range(r):
+#          XX  for k in range(r):    XX
 #            for k in range(r + 1):
 #
 #     b. If you want a loop that runs from 0 to s, inclusive,
@@ -38,13 +38,13 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #     c. If you want a loop that runs from r to s, inclusive, assuming s >= r,
 #          what expression would you use in the _____ below?
 #
-#            for k in range(r. s+1):
+#            for k in range(s + 1 - r):
 #
 #     d. If you want a loop that runs from (r + 4) to (s - 10),
 #          including the (r + 4) but not including the (s - 10),
 #          what expression would you use in the _____ below?
 #
-#            for k in range((r + 4), (s - 10)):
+#            for k in range((s - 10) - (r + 4)):
 #
 #     e. The following code snippet attempts to return the number
 #          of integers from r to s, inclusive, whose cosines are positive.
@@ -54,11 +54,11 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #  3) it should be cos(k) not cos (r)
 #  4) count needs to be count + 1 to keep a record, not to set it to one
 #  5) the return count needs to be outside of both loops for it to return a final value, not just the first value
-#              for k in range(r - s):
-#                  count = 0
-#                  if math.cos(r) > 0:
-#                      count = 1
-#                  return count
+#              for k in range(r - s):     count = 0
+#                  count = 0                 for k in range (s+1 - r)
+#                  if math.cos(r) > 0:          if math.cos(k + r ) > 0
+#                      count = 1                    count = count + 1
+#                  return count           return count
 #
 #     f. The code in the "graphics accumulation" example below includes:
 #            for _ in range(n):
@@ -81,10 +81,10 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #  The first one has the same functionality. the (k * diameter) in the point statement covers the
 #  movement of the circle, and so the final statement is unnecessary in the second set of code.
 #              x = starting_point.x
-#              for k in range(n):
-#                  center = rg.Point(x + (k * diameter), y)
-#                  circle = rg.Circle(point, radius)
-#                  circle.attach_to(window)
+#            XXXXXXXX  for k in range(n):
+#                           center = rg.Point(x + (k * diameter), y)
+#                           circle = rg.Circle(point, radius)
+#                           circle.attach_to(window)     XXXXXXXXX
 #
 #              x = starting_point.x
 #              for k in range(n):
