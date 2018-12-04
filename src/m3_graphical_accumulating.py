@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Derrick Swart.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -109,6 +109,20 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    draw_window = window
+    new_x = point.x + length
+    new_yb = point.y
+    new_ye = point.y
+    for k in range(n):
+
+        line = rg.Line(rg.Point(point.x, new_ye), rg.Point(new_x, new_yb))
+        line.attach_to(draw_window)
+        new_yb = point.y + 30 * k
+        new_ye = point.y + 30 * k
+    draw_window.render()
+
+
+
 
 
 def run_test_draw_lines():
@@ -161,7 +175,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -174,7 +188,14 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    draw_window = window
+    py = point.y - 100
+    for k in range(n):
 
+        line = rg.Line(point, rg.Point(point.x + 100, py))
+        line.attach_to(draw_window)
+        py = py + (200/(n-1))
+    draw_window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
